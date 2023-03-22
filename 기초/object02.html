@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+    <script>
+        //cat 객체 생성하기
+        let abc = "weight";
+        let cat1 = {
+            name : "냥이",
+	        family : "코리안 숏 헤어",
+	        [abc] : 1000
+        }
+        // console.log(cat1);
+        // let key = prompt("알고싶은 key를 입력하세요",name);
+        // //cat1.key으로는 접근할 수 없음, []표기법으로 변수를 검색할수 있음
+        // console.log(cat1[key]);
+        console.log(cat1.name);
+        let aaa = "name";
+        //냥이
+        console.log(cat1['name']);
+        //찾을수없음 ↓
+        console.log(cat1.aaa);
+        //냥이
+        console.log(cat1[aaa]);
+        
+        function makeUser(name,age){
+            //객체형태 리터럴 (문자열:변수)(변수는 받을때 []로 받아야함)
+            return{
+                //만약 두개가 이름이 똑같으면 바로 name, age으로 사용가능함 ,단축 프로퍼티
+                name, //(=)name:name,
+                age //(=)age:age,
+            }
+        }
+        let user = makeUser("green",30);
+        console.log(user);
+
+        //in연산자는 있는 지 없는지 알려줌 "key" in object
+        console.log("name" in user) //true
+        console.log("weight" in user) //false
+
+        //for...in 문 객체의 모든 키를 순화
+        for(key in user){
+            console.log(key);
+            console.log(user[key]);
+        }
+        //객체 복사
+        let str1 = "Hello";
+        let str2 = str1;
+        console.log(str1);
+        console.log(str2);
+        str1 = "Hi";
+        console.log(str1);
+        console.log(str2);
+        let student1 = {
+            name : "이효정",
+            age : 28
+        }
+       let student2 = student1;
+       console.log(student1);
+       console.log(student2);
+       //복사는 같은 객체를 바라보게 함 -
+       student2.name = "고요한";
+       console.log(student1);
+       console.log(student2);
+
+       let a = {};
+       let b = a; //참조에 의한 복사
+    //    //같은 객체를 바라봐서 true로 나옴
+    //     console.log(a == b);
+    //     console.log(a === b);
+    //    let c = {};
+    //    let d = {};
+    //    //객체를 바라보는 주소값을 복사해야함 - false으로 나옴
+    //     console.log(c == d);
+    //     console.log(c === d);
+        let studentClone = {};
+        for(let key in student1){
+            studentClone[key] = student1[key];
+        }
+        console.log(student1);
+        console.log(studentClone);
+        student1.name="둥둥이";
+        console.log(student1);
+        console.log(studentClone);
+        let studentClone2 = {
+            ...student1,
+            //원래 전체에서 name 값 덮어짐 
+            name : "김그린"
+        }
+        console.log(studentClone2);
+        student1.name = "김주원";
+        console.log(student1);
+        console.log(studentClone2);
+
+        //Object.assigh({},복사할 객체)
+        let studentClone3 = Object.assign({},student1);
+        console.log(studentClone3);
+
+        let user2 = {
+            name : "남민섭",
+            sizes:{
+                height:180,
+                weight:72
+            }
+        }
+        let clone = Object.assign({},user2);
+        console.log(user2);
+        console.log(clone);
+        user2.sizes.height = 178;
+        console.log(user2);
+        console.log(clone);
+        let clone2 = {
+            ...user2,
+            sizes: {
+                ...user2.sizes
+            }
+        }
+        let clone3 = _.cloneDeep(user2);
+        user2.sizes.height = 178;
+        console.log(user2);
+        console.log(clone);
+        console.log(clone2);
+        console.log(clone3);
+    </script>
+</body>
+</html>

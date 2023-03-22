@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatile" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr =[ 1,"green", true, function(){alert('희희')}]
+        let [var1, var2, var3, var4] = arr;
+        console.log(var2);
+        //화살표 함수 = () => {} 
+        let myFun = () => {
+            console.log('함수호출했어요');
+        } 
+        myFun();
+    </script>
+</body>
+</html>
